@@ -9,6 +9,10 @@ k = 0
 sped = 100
 def main(sped):
 	i = 0
+	def drawRect(line, i):
+		pygame.draw.rect(window, (colorOfBlocks[i]), (line['x'], line['y'], line['widht'], line['height']))
+	def drawText(lineImage, lineText):
+		window.blit(lineImage, (lineText['x'], lineText['y']))
 	colorOfBlocks = []
 	pygame.init()
 	window = pygame.display.set_mode((500, 500))
@@ -85,17 +89,17 @@ def main(sped):
 			if i == x:
 				colorOfBlocks[x] = (148,0,211)
 
-		window.blit(fontImage, (caption['x'], caption['y']))
+		drawText(fontImage,caption)
 
-		pygame.draw.rect(window, (colorOfBlocks[0]), (start['x'], start['y'], start['widht'], start['height']))
-		window.blit(startImage, (startText['x'], startText['y']))
-
-		pygame.draw.rect(window, (colorOfBlocks[1]), (options['x'], options['y'], options['widht'], options['height']))
-		window.blit(optionsImage, (optionsText['x'], optionsText['y']))
-
-		pygame.draw.rect(window, (colorOfBlocks[2]), (exit['x'], exit['y'], exit['widht'], exit['height']))
-		window.blit(exitImage, (exitText['x'], exitText['y']))
-
+		drawRect(start, 0)
+		drawText(startImage, startText)
+		
+		drawRect(options, 1)
+		drawText(optionsImage, optionsText)
+		
+		drawRect(exit, 2)
+		drawText(exitImage, exitText)
+		
 		pygame.display.update()
 
 	pygame.quit()
