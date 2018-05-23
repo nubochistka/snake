@@ -1,5 +1,7 @@
 import pygame
 import random
+import os
+import subprocess
 
 def addBlock(coordinate):
 
@@ -48,7 +50,8 @@ newElemY = 0
 move = "x"
 
 while run :
-	pygame.time.delay(100)
+	sped = os.environ['speed']
+	pygame.time.delay(int(sped))
 	coordinate[0] = [x,y]
 	if move == "-x": #left
 		x -= speed
@@ -102,3 +105,5 @@ while run :
 
 print(counter)
 pygame.quit()
+
+subprocess.call('python3 main.py', shell=True)

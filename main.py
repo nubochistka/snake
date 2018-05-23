@@ -50,7 +50,6 @@ fontImage = myFont.render(caption["Text"], 0, (captionFontColor))
 for x in range(0,len(activeKeys)):
 	colorOfBlocks.append(rectColor)
 
-
 while run:
 	pygame.time.delay(140)
 	for event in pygame.event.get():
@@ -81,13 +80,8 @@ while run:
 		if i == x:
 			colorOfBlocks[x] = (148,0,211)
 
-
-
-
-
 	window.blit(fontImage, (caption['x'], caption['y']))
 
-	
 	pygame.draw.rect(window, (colorOfBlocks[0]), (start['x'], start['y'], start['widht'], start['height']))
 	window.blit(startImage, (startText['x'], startText['y']))
 
@@ -97,12 +91,13 @@ while run:
 	pygame.draw.rect(window, (colorOfBlocks[2]), (exit['x'], exit['y'], exit['widht'], exit['height']))
 	window.blit(exitImage, (exitText['x'], exitText['y']))
 
-
 	pygame.display.update()
 
 pygame.quit()
 
 if i == 2:
 	print("Good bye!!")
+elif i == 1 and k == 1:
+	subprocess.call(' python3 options.py', shell=True)
 elif i == 0 and k == 1:
-	subprocess.call('python3 snake.py', shell=True)
+	subprocess.call('speed=$(cat file) python3 snake.py', shell=True)
